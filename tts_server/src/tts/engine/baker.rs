@@ -212,7 +212,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_text_cowa() {
+    fn test_text_car() {
 
         let test_texts: Vec<&str> = vec![
             "接管中",
