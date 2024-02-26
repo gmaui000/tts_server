@@ -1,0 +1,68 @@
+[package]
+name = "tflite"
+version = "0.9.6"
+authors = ["Boncheol Gu <boncheol.gu@gmail.com>"]
+description = "Rust bindings for TensorFlow Lite"
+keywords = ["tensorflow", "tflite", "bindings"]
+license = "MIT/Apache-2.0"
+repository = "https://github.com/boncheolgu/tflite-rs"
+readme = "README.md"
+edition = "2018"
+documentation = "https://docs.rs/crate/tflite"
+
+# filter in only necessary files
+# tar tvaf target/package/tflite-*.crate | awk '{print $3 "\t" $6}' | sort -n
+include = [
+  "build.rs",
+  "Cargo.toml",
+  "*.md",
+  "LICENSE-*",
+  "data/",
+  "csrc/",
+  "src/",
+  "submodules/downloads",
+  "submodules/tensorflow/tensorflow/lite/c",
+  "submodules/tensorflow/tensorflow/lite/core",
+  "submodules/tensorflow/tensorflow/lite/delegates/nnapi",
+  "submodules/tensorflow/tensorflow/lite/delegates/flex",
+  "submodules/tensorflow/tensorflow/lite/experimental/resource_variable",
+  "submodules/tensorflow/tensorflow/lite/experimental/ruy",
+  "submodules/tensorflow/tensorflow/lite/kernels",
+  "submodules/tensorflow/tensorflow/lite/nnapi",
+  "submodules/tensorflow/tensorflow/lite/profiling",
+  "submodules/tensorflow/tensorflow/lite/schema/schema_generated.h",
+  "submodules/tensorflow/tensorflow/lite/*.cc",
+  "submodules/tensorflow/tensorflow/lite/*.h",
+  "submodules/tensorflow/tensorflow/lite/tools/make",
+  "submodules/tensorflow/third_party/eigen3",
+  "submodules/tensorflow/third_party/fft2d",
+  "submodules/tensorflow/tensorflow/core/kernels/eigen_convolution_helpers.h",
+  "submodules/tensorflow/tensorflow/core/kernels/eigen_spatial_convolutions-inl.h",
+  "submodules/tensorflow/tensorflow/core/public/version.h",
+]
+
+[dependencies]
+cpp = "0.5.5"
+libc = "0.2.77"
+maybe-owned = "0.3.4"
+thiserror = "1.0.20"
+
+[build-dependencies]
+bart = { version = "0.1.4", optional = true }
+bart_derive = { version = "0.1.4", optional = true }
+bindgen = "0.69.1"
+cpp_build = "0.5.5"
+fs_extra = { version = "1.2.0", optional = true }
+
+[features]
+build = ["fs_extra"]
+# default = [""]
+debug_tflite = ["build"]                      # use "libtensorflow-lite.a" built in debug mode
+generate_model_apis = ["bart", "bart_derive"]
+no_micro = ["build"]
+
+[package.metadata.docs.rs]
+all-features = false
+no-default-features = true
+# default-target = "x86_64-unknown-linux-gnu"
+default-target = "x86_64-unknown-linux-cpu"

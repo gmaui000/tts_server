@@ -1,0 +1,6 @@
+# [workspace]
+# resolver = "2"
+# members = [
+#     "enum-ordinalize-derive",
+#     "enum-ordinalize"
+# ]

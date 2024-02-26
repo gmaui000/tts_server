@@ -1,0 +1,17 @@
+kind: pipeline
+name: default
+steps:
+  - name: build
+    image: rust:1.62.1
+    commands:
+      - cargo build --all
+  - name: publish
+    image: rust:1.62.1
+    environment:
+      token: 
+        from_secret: token
+    commands:
+      - ./publish.sh
+    when:
+      event:
+        - tag

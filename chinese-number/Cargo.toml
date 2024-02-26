@@ -1,0 +1,30 @@
+[package]
+name = "chinese-number"
+version = "0.7.3"
+authors = ["Magic Len <len@magiclen.org>"]
+edition = "2021"
+rust-version = "1.58"
+repository = "https://github.com/magiclen/chinese-number"
+homepage = "https://magiclen.org/chinese-number"
+keywords = ["chinese", "number", "integer", "money", "float"]
+categories = ["no-std", "localization", "parser-implementations", "value-formatting"]
+description = "Convert primitive numbers to Chinese numbers, or parse Chinese numbers to primitive numbers."
+license = "MIT"
+include = ["src/**/*", "Cargo.toml", "README.md", "LICENSE"]
+
+[dependencies]
+chinese-variant = { path = "chinese-variant", package = "chinese-variant" }
+enum-ordinalize = { path = "enum-ordinalize/enum-ordinalize", package = "enum-ordinalize" }
+
+num-bigint = { version = "0.4", default-features = false, optional = true }
+num-traits = { version = "0.2", default-features = false, optional = true }
+
+[dev-dependencies]
+assert-eq-float = { path = "assert-eq-float", package = "assert-eq-float" }
+
+[features]
+default = ["std", "number-to-chinese"]
+
+std = []
+number-to-chinese = ["num-bigint", "num-traits"]
+chinese-to-number = ["num-traits"]

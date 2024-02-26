@@ -1,0 +1,23 @@
+[package]
+name = "chinese-variant"
+version = "1.1.2"
+authors = ["Magic Len <len@magiclen.org>"]
+edition = "2021"
+rust-version = "1.56"
+repository = "https://github.com/magiclen/chinese-variant"
+homepage = "https://magiclen.org/chinese-variant"
+keywords = ["chinese", "variant", "simple", "traditional"]
+categories = ["localization"]
+description = "An enum to represent the variants of the Chinese Language."
+license = "MIT"
+include = ["src/**/*", "Cargo.toml", "README.md", "LICENSE"]
+
+[dependencies]
+enum-ordinalize = { path = "../enum-ordinalize/enum-ordinalize", package = "enum-ordinalize" }
+
+[features]
+default = []
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
