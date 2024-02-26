@@ -1,7 +1,7 @@
 use actix_web::{web, HttpResponse};
 use tracing::{self, info};
 use std::io::Cursor;
-use std::{sync::{Arc, Mutex}};
+use std::sync::{Arc, Mutex};
 use super::super::super::AppState;
 use chrono::Local;
 

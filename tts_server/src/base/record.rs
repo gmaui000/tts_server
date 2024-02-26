@@ -78,3 +78,24 @@ impl QueryTracker {
             ]));
         }
 
+        let mut table2 = Table::new();
+        table2.set_format(*format::consts::FORMAT_NO_LINESEP_WITH_TITLE);
+
+        table2.add_row(Row::new(vec![
+            Cell::new("Index"),
+            Cell::new("Duration (s)"),
+            Cell::new("Text"),
+        ]));
+
+        for(index, record) in self.cost_records.iter().enumerate() {
+            table2.add_row(Row::new(vec![
+                Cell::new(&index.to_string()),
+                Cell::new(&(record.duration.num_milliseconds() as f64 / 1000.0).to_string()),
+                Cell::new(&record.text),
+            ]));
+        }
+
+        format!("Start at: {}\nTotal Query Times:{}\n\nLast 10 Queries:\n{}\n\nCost 10 Queries:\n{}",
+            self.start_time, self.total_cnts, table1, table2)
+    }
+}

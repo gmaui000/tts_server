@@ -66,11 +66,10 @@ impl TTSEngine {
             .collect();
 
         // 将匹配的分隔符替换为";"，并在每个分隔符后添加";"
-        let processed_text =
-            re_sep.replace_all(processed_text.trim(), |_caps: &regex::Captures| {
-                // format!("{};", &caps[1])
-                String::from(";")
-            });
+        let processed_text = re_sep.replace_all(processed_text.trim(), |_caps: &regex::Captures| {
+            // format!("{};", &caps[1])
+            String::from(";")
+        });
 
         // 使用";"拆分文本
         let texts: Vec<&str> = processed_text.split(';').collect();
