@@ -190,7 +190,8 @@ impl PinyinTranslator<'static> {
                 let value = self.word_dict.get(tail.as_str());
                 let value = match value {
                     None => {
-                        format!("{}{}", tail, SEP)
+                        //format!("{}{}", tail, SEP)
+                        "".to_string()
                     }
                     Some(value) => value.to_string(),
                 };

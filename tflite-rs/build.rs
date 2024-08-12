@@ -3,10 +3,10 @@
 extern crate bart_derive;
 
 use std::env;
-use std::env::VarError;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 #[cfg(feature = "build")]
 use std::time::Instant;
+// use std::env::VarError;
 
 fn manifest_dir() -> PathBuf {
     PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap())
@@ -49,6 +49,7 @@ fn prepare_tensorflow_source() -> PathBuf {
     tf_src_dir
 }
 
+#[cfg(feature = "build")]
 fn binary_changing_features() -> String {
     let mut features = String::new();
     if cfg!(feature = "debug_tflite") {
@@ -225,7 +226,8 @@ fn import_tflite_types() {
         .opaque_type("std::string")
         .opaque_type("flatbuffers::NativeTable")
         .blocklist_type("std")
-        .allowlist_type("tflite::Interpreter_TfLiteDelegatePtr")
+        .blocklist_type("std::_Rb_tree_insert_return_type")
+        .blocklist_type("tflite::Interpreter_TfLiteDelegatePtr")
         .blocklist_type("tflite::Interpreter_State")
         .default_enum_style(EnumVariation::Rust { non_exhaustive: false })
         .derive_partialeq(true)
@@ -241,7 +243,8 @@ fn import_tflite_types() {
         .clang_arg("c++")
         .clang_arg("-std=c++17")
         // required to get cross compilation for aarch64 to work because of an issue in flatbuffers
-        .clang_arg("-fms-extensions");
+        .clang_arg("-fms-extensions")
+        .no_copy("_Tp");
 
     let bindings = bindings.generate().expect("Unable to generate bindings");
 
@@ -287,6 +290,7 @@ fn import_stl_types() {
         .clang_arg("c++")
         .clang_arg("-std=c++17")
         .clang_arg("-fms-extensions")
+        .formatter(Formatter::Rustfmt)
         .generate()
         .expect("Unable to generate STL bindings");
 

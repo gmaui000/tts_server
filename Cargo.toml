@@ -1,3 +1,8 @@
 [workspace]
 resolver = "2"
-members = ["tts_server", "tflite-rs", "chinese-number", "pinyin-translator"]
+members = [
+    "tts_server",
+    "tflite-rs",
+    "chinese-number",
+]
+

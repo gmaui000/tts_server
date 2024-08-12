@@ -16,10 +16,10 @@ actix-web = "4.3.0"
 actix-files = "0.6"
 actix-cors = "0.7.0"
 actix-web-actors = "4.2.0"
-time = { version = "0.3.20", features = ["macros"] }
-clap = { version = "4.4.4", features = ["derive"] }
-tracing-appender = { version = "0.2.2" }
-tracing-subscriber = { version = "0.3.17", features = [
+time = { version = "0.3.36", features = ["macros"] }
+clap = { version = "4.5.15", features = ["derive"] }
+tracing-appender = { version = "0.2.3" }
+tracing-subscriber = { version = "0.3.18", features = [
     "env-filter",
     "time",
     "local-time",
@@ -28,8 +28,8 @@ tracing = "0.1.37"
 regex = "1.9.5"
 tokio = { version = "1.32.0", features = ["full"] }
 futures = "0.3.28"
-tflite = { path = "../tflite-rs", package = "tflite" }
-ndarray = "0.15.6"
+tflite = { path = "../tflite-rs", package = "tflite", features = ["generate_model_apis"] }
+ndarray = "0.16.0"
 lazy_static = "1"
 pinyin = "0.10"
 unicode-normalization = "0.1"
@@ -37,5 +37,5 @@ hound = "3"
 chinese-number = { path = "../chinese-number", package = "chinese-number" }
 chrono = "0.4"
 prettytable = "0.10"
-rubato = "0.14.1"
+rubato = "0.15.0"
 pinyin-translator = { path = "../pinyin-translator", package = "pinyin-translator" }

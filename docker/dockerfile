@@ -4,7 +4,7 @@ FROM {harbor}/{repository}/rust-builder AS build
 WORKDIR /work
 #拷贝源代码
 COPY .. .
-ENV TFLITE_LIB_DIR /work/tflite-rs/submodules/deps/
+ENV TFLITE_LIB_DIR=/work/tflite-rs/submodules/deps/
 
 RUN cargo build --release --quiet --bin tts_server
 
@@ -42,7 +42,7 @@ COPY ./tflite-rs/submodules/deps/libtensorflowlite.so /work
 COPY --from=build /work/target/release/tts_server /work/
 
 #定义环境变量
-ENV PATH /work:$PATH
+ENV PATH=/work:$PATH
 
 EXPOSE 40004
 CMD ["bash", "/work/start.sh"]

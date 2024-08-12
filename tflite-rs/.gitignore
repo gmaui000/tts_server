@@ -1,0 +1,6 @@
+# gen
+src/model/builtin_options_impl.rs
+src/model/stl/memory_impl.rs
+src/model/stl/vector_impl.rs
+data/*
+!data/*.rs.template

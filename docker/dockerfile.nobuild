@@ -32,7 +32,7 @@ COPY ./tflite-rs/submodules/deps/libtensorflowlite.so /work
 COPY ./target/release/tts_server /work
 
 #定义环境变量
-ENV PATH /work:$PATH
+ENV PATH=/work:$PATH
 
 EXPOSE 40004
 CMD ["bash", "/work/start.sh"]
