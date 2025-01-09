@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,20 +44,21 @@
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <form class="form-signin" method="post">
-        <h3 class="form-signin-heading">{{ app_name }}</h3>
-        <label for="inputName" class="sr-only">用户名</label>
-        <input type="text" id="inputName" class="form-control" placeholder="用户名" name="user" required autofocus>
-        <label for="inputPassword" class="sr-only">密码</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="密码" name="pwd" required>
+        <form class="form-signin" method="post">
+            <h3 class="form-signin-heading">{{ app_name }}</h3>
+            <label for="inputName" class="sr-only">用户名</label>
+            <input type="text" id="inputName" class="form-control" placeholder="用户名" name="user" required autofocus>
+            <label for="inputPassword" class="sr-only">密码</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="密码" name="pwd" required>
 
-        <button class="btn btn-lg btn-primary btn-block" id="submit" type="submit">Login</button>
+            <button class="btn btn-lg btn-primary btn-block" id="submit" type="submit">Login</button>
 
-        <p class="text-danger" style="display:none" id="error"></p>
-    </form>
+            <p class="text-danger" style="display:none" id="error"></p>
+        </form>
 
-</div>
+    </div>
 </body>
+
 </html>

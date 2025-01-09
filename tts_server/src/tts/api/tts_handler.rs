@@ -28,7 +28,8 @@ pub async fn api_tts(data: web::Data<Arc<Mutex<AppState>>>, query: web::Query<TT
     writer.finalize().unwrap();
 
     let duration = Local::now().signed_duration_since(start_time);
-    data.get_ref().lock().unwrap().track.record_query(text.to_owned(), duration);
+    data.get_ref().lock().unwrap().track.record_query(text.to_owned(), start_time.format("%Y-%m-%d %H:%M:%S").to_string(),
+                                                     std::time::Duration::from_millis(duration.num_milliseconds() as u64));
     info!("req: {:?} cost: {:.2}s", text, duration.num_milliseconds() as f64 / 1000.0);
 
     HttpResponse::Ok().content_type("audio/wav").body(cursor.into_inner())

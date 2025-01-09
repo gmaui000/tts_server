@@ -1,10 +1,10 @@
 use actix_web::*;
 use actix_files as fs;
-use std::{sync::{Arc, Mutex}};
+use std::sync::{Arc, Mutex};
 use super::api::{tts_handler, index};
 use super::super::base::configuration::AppConfigItem;
 use super::engine::tts_engine::TTSEngine;
-use super::super::{ AppState, QueryTracker};
+use super::super::{AppState, QueryTracker};
 use tracing::{self, info};
 use chrono::{Local, Datelike, Timelike};
 
