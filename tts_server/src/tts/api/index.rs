@@ -1,5 +1,5 @@
 use actix_web::{web, HttpRequest, HttpResponse};
-use std::{sync::{Arc, Mutex}};
+use std::sync::{Arc, Mutex};
 use super::super::super::AppState;
 
 #[actix_web::get("/")]

@@ -53,7 +53,6 @@ features = ["number-to-chinese", "chinese-to-number"]
 
 extern crate alloc;
 
-#[macro_use]
 extern crate enum_ordinalize;
 
 #[cfg(feature = "number-to-chinese")]

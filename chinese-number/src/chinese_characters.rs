@@ -79,7 +79,7 @@ impl ChineseNumber {
     }
 
     #[inline]
-    pub(crate) const fn from_char(character: char) -> Option<Self> {
+    pub(crate) const fn _from_char(character: char) -> Option<Self> {
         match character {
             '零' | '0' | '〇' => Some(Self::零),
             '一' | '壹' | '1' => Some(Self::一),
@@ -180,7 +180,7 @@ impl ChineseExponent {
     }
 
     #[inline]
-    pub(crate) const fn from_char(character: char) -> Option<Self> {
+    pub(crate) const fn _from_char(character: char) -> Option<Self> {
         match character {
             '分' => Some(Self::分),
             '角' => Some(Self::角),
@@ -225,7 +225,7 @@ impl ChineseSign {
     }
 
     #[inline]
-    pub(crate) const fn from_char(character: char) -> Option<Self> {
+    pub(crate) const fn _from_char(character: char) -> Option<Self> {
         match character {
             '正' => Some(Self::正),
             '負' | '负' => Some(Self::負),
@@ -247,7 +247,7 @@ impl ChinesePoint {
     }
 
     #[inline]
-    pub(crate) const fn from_char(character: char) -> Option<Self> {
+    pub(crate) const fn _from_char(character: char) -> Option<Self> {
         match character {
             '點' | '点' => Some(ChinesePoint),
             _ => None,

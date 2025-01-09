@@ -8,7 +8,7 @@ const SEP: char = 7 as char;
 trait StringUtils {
     fn substring(&self, start: usize, len: usize) -> &str;
     fn substring_len(&self, start: usize, len: usize) -> &str;
-    fn slice(&self, range: impl RangeBounds<usize>) -> &str;
+    fn _slice(&self, range: impl RangeBounds<usize>) -> &str;
 }
 
 impl StringUtils for str {
@@ -47,7 +47,7 @@ impl StringUtils for str {
         &self[byte_start..byte_end]
     }
 
-    fn slice(&self, range: impl RangeBounds<usize>) -> &str {
+    fn _slice(&self, range: impl RangeBounds<usize>) -> &str {
         let start = match range.start_bound() {
             Bound::Included(bound) | Bound::Excluded(bound) => *bound,
             Bound::Unbounded => 0,

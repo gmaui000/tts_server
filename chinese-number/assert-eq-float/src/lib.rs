@@ -28,8 +28,6 @@ pub extern crate num_traits;
 mod eq;
 mod ne;
 
-pub use eq::*;
-pub use ne::*;
 use num_traits::float::FloatCore;
 
 #[doc(hidden)]
