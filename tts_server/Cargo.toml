@@ -4,7 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-thiserror = "1.0.24"
+thiserror = "2.0.11"
+bytes = "1.0"
 anyhow = "1.0.69"
 rayon = "1.0"
 serde = { version = "1", features = ["derive"] }
@@ -28,8 +29,9 @@ tracing = "0.1.37"
 regex = "1.9.5"
 tokio = { version = "1.32.0", features = ["full"] }
 futures = "0.3.28"
-tflite = { path = "../tflite-rs", package = "tflite", features = ["generate_model_apis"] }
-ndarray = "0.16.0"
+tflite = { path = "../tflite-rs", package = "tflite", features = [
+    "generate_model_apis",
+] }
 lazy_static = "1"
 pinyin = "0.10"
 unicode-normalization = "0.1"
@@ -37,5 +39,5 @@ hound = "3"
 chinese-number = { path = "../chinese-number", package = "chinese-number" }
 chrono = "0.4"
 prettytable = "0.10"
-rubato = "0.15.0"
+rubato = "0.16.1"
 pinyin-translator = { path = "../pinyin-translator", package = "pinyin-translator" }
