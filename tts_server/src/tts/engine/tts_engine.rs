@@ -365,7 +365,7 @@ mod tests {
     fn test_synthesis_cnen() {
         println!("test_synthesis_en");
         let engine = TTSEngine::new();
-        let wav = engine.synthesis("english test,模式.", 0.2);
+        let wav = engine.synthesis("乘客朋友，您好，请您坐稳扶好，酷哇科技无人驾驶小巴即将带您体验和参观“无人之境”项目。“无人之境”示范体验区是国家智能网联汽车（上海）试点示范区的重要组成部分，可支撑无人化高级别自动驾驶技术测试验证。目前已实现无人驾驶小巴， robot taxi、无人清扫等多业态无人驾驶应用场景。此时此刻在您右侧的建筑是上海汽车博物馆。他是中国首家以汽车为主题，融汽车历史、人物、技术和创意为一体的专业博物馆。博览馆建筑优美流程，收藏了近百台世界各地的古董车。本车由上海汽车博物馆站，开往一维诶爱智行港终点站，下一站，房车中国上海基地站，车辆离站，请系好安全带", 0.1);
         let mut writer = WavWriter::create(
             "tts3.wav",
             WavSpec {
