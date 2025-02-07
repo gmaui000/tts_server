@@ -7,10 +7,19 @@ use super::super::super::AppState;
 use chrono::Local;
 
 #[derive(serde::Deserialize)]
+#[derive(utoipa::ToSchema)]
 pub struct TTSQuery {
     text: String,
 }
 
+
+#[utoipa::path(
+    get,
+    path = "/api/tts",
+    responses(
+        (status = 200, description = "Successfully got tts response", body = TTSQuery)
+    )
+)]
 #[actix_web::get("/api/tts")]
 pub async fn api_tts(data: web::Data<Arc<RwLock<AppState>>>, query: web::Query<TTSQuery>) -> HttpResponse {
     let start_time = Local::now();
