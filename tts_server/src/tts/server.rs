@@ -1,6 +1,7 @@
 use actix_web::*;
 use actix_files as fs;
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
+use tokio::sync::RwLock;
 use super::api::{tts_handler, index};
 use super::super::base::configuration::AppConfigItem;
 use super::engine::tts_engine::TTSEngine;
@@ -15,7 +16,7 @@ pub async fn start(config: &AppConfigItem) -> anyhow::Result<()> {
     let nowtime = format!("{:02}/{:02}/{:04} {:02}:{:02}:{:02}", now.month(), now.day(), now.year(), now.hour(), now.minute(), now.second());
     info!("tts_server start at {}.", nowtime);
 
-    let app_state = web::Data::new(Arc::new(Mutex::new(AppState {
+    let app_state = web::Data::new(Arc::new(RwLock::new(AppState {
         engine: TTSEngine::new(),
         track: QueryTracker::new(nowtime),
     })));

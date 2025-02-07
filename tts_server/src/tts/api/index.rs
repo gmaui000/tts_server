@@ -1,12 +1,16 @@
 use actix_web::{web, HttpRequest, HttpResponse};
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
+use tokio::sync::RwLock;
 use super::super::super::AppState;
 
 #[actix_web::get("/")]
-pub async fn index(data: web::Data<Arc<Mutex<AppState>>>, _req: HttpRequest) -> HttpResponse {
-    let app_state = data.lock().unwrap();
+pub async fn index(data: web::Data<Arc<RwLock<AppState>>>, _req: HttpRequest) -> HttpResponse {
+    let track_string = {
+        let app_state = data.read().await;
+        app_state.track.to_table_string() // Clone track output while holding lock
+    };
 
     HttpResponse::Ok()
     .content_type("text/plain; charset=utf-8")
-    .body(app_state.track.to_table_string())
+    .body(track_string)
 }
