@@ -6,19 +6,22 @@ use tokio::sync::RwLock;
 use super::super::super::AppState;
 use chrono::Local;
 
-#[derive(serde::Deserialize)]
-#[derive(utoipa::ToSchema)]
+#[derive(serde::Deserialize, utoipa::ToSchema)]
 pub struct TTSQuery {
+    /// 要合成语音的文本
+    #[schema(example = "今天天气怎么样？明天大概有50%的概率下雨，请记得带伞。")]
     text: String,
 }
-
 
 #[utoipa::path(
     get,
     path = "/api/tts",
     responses(
-        (status = 200, description = "Successfully got tts response", body = TTSQuery)
-    )
+        (status = 200, description = "Successfully got tts response", content_type = "audio/wav"),
+        (status = 400, description = "Bad request"),
+        (status = 500, description = "Internal server error")
+    ),
+    tag = "TTS API"
 )]
 #[actix_web::get("/api/tts")]
 pub async fn api_tts(data: web::Data<Arc<RwLock<AppState>>>, query: web::Query<TTSQuery>) -> HttpResponse {
